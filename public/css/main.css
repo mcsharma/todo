@@ -1,0 +1,13 @@
+.hidden {
+	display: none;
+}
+
+a.removeLink {
+  font-size: 14px;
+}
+span.todoText {
+  font-size: 18px;
+}
+#todo_composer {
+  margin-top: 10px;
+}

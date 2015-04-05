@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <script type="text/javascript" src="js/parse.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+	<script src="js/jquery-2.1.3.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+  </head>
+  <body>
+	 <h3>Todo App</h3>
+	 <span id="welcome"></span>
+	 <span id="logout" class="hidden">
+		 (<a href="#" onclick="logout();">Logout</a>)
+	 </span>
+	 <div id="email_form" class="hidden">
+	  	<div>Enter your email address</div>
+	 	<input type="text" id="email" placeholder="Email"/>
+	  	<input type="button" value="Submit" onclick="submitEmail();"/>
+     </div>
+	 <div id="password_form" class="hidden">
+	 	 <div id="password_cta"></div>
+		 <input type="password" id="password" placeholder="password" />
+	 	 <input type="button" id="password_button" value="submit" onclick="submitPassword();" />
+	 </div>
+	 <div class="hidden" id="todo_composer">
+		 <input type="text" id="new_todo" placeholder="Add a new Todo" />
+	 	 <input type="button" id="add_button" value="Add" onclick="saveNewTodo();" />
+	 </div>
+	 <ol id="todo_list">
+	 </ol>
+	</body>
+</html>

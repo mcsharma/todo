@@ -1,0 +1,14 @@
+{
+  "global": {
+    "parseVersion": "1.4.0"
+  },
+  "applications": {
+    "Todo": {
+      "applicationId": "8BKp1MnDzuFW6dn4jMkIbdujI2caMy56NWoXlavI",
+      "masterKey": "SLxh6iLvjGALg4PvclPtkhFyH6DlyJv6YO0PZCLB"
+    },
+    "_default": {
+      "link": "Todo"
+    }
+  }
+}
