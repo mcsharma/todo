@@ -34,21 +34,20 @@ function onLoggedOutUser() {
 }
 
 function submitEmail () {
-	givenEmail = document.getElementById('email').value;
-	var q = new Parse.Query(Parse.User);
-	q.equalTo('email', givenEmail);
-	q.find({success: function (users) {
-		onEmailSearchResponse(users ? users[0]: null);
-	}});
+	givenEmail = $('#email').val();
+	Parse.Cloud.run('emailExists', {email: givenEmail}, {
+      success: onEmailSearchResponse,
+      error: function(error) {alert(error);}
+    });
 }
 
-function onEmailSearchResponse(user) {
+function onEmailSearchResponse(emailExists) {
+    isExistingEmail = emailExists;
 	$('#email_form').hide();
-    isExistingEmail = user ? true : false;
 	var text = isExistingEmail
 	  ? 'Please enter your password'
 	  : 'Please create a new password';
-	$('#password_cta').html(text);
+	$('#password_cta').text(text);
 	$('#password_form').bind('keyup', onKeyPressInPassword);
   	$('#password_form').show();
 }
@@ -116,6 +115,8 @@ function saveNewTodo() {
     var todo = new Todo();
     todo.set("text", text);
     todo.set('owner', Parse.User.current().id);
+    todo.setACL(new Parse.ACL(Parse.User.current()));
+
     todo.save(null, {
       success: function(todo) {
         $('#new_todo').val('');
